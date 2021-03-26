@@ -17,7 +17,7 @@
         rel="stylesheet"
     />
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-    <title>Material Kit React</title>
+    <title>Portfolio</title>
 </head>
 <body>
 <noscript> You need to enable JavaScript to run this app. </noscript>

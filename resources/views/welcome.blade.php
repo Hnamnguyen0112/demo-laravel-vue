@@ -7,7 +7,6 @@
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="theme-color" content="#000000" />
-
     <link
         rel="stylesheet"
         type="text/css"
@@ -17,6 +16,7 @@
         href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
         rel="stylesheet"
     />
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <title>Material Kit React</title>
 </head>
 <body>

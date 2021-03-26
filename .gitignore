@@ -2,6 +2,8 @@
 /public/hot
 /public/storage
 /public/fonts
+/public/js
+/public/css
 /storage/*.key
 storage/debugbar/
 storage/api-docs/

@@ -4,6 +4,7 @@
 /public/fonts
 /public/js
 /public/css
+/public/images
 /storage/*.key
 storage/debugbar/
 storage/api-docs/

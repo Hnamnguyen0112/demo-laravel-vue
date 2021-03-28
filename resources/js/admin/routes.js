@@ -3,7 +3,7 @@ import Tv from "@material-ui/icons/Tv";
 
 var routes = [
     {
-        path: "/index",
+        path: "/",
         name: "Dashboard",
         icon: Tv,
         iconColor: "Primary",

@@ -36,7 +36,7 @@ const Auth = () => {
 
     const getRoutes = (routes) => {
         return routes.map((prop, key) => {
-            if (prop.layout === "/auth") {
+            if (prop.layout === "/admin/login") {
                 return (
                     <Route
                         path={prop.layout + prop.path}
@@ -67,12 +67,12 @@ const Auth = () => {
                     <Box component={Grid} container justifyContent="center">
                         <Switch>
                             {getRoutes(routes)}
-                            <Redirect from="*" to="/auth/login" />
+                            <Redirect from="*" to="/admin/login" />
                         </Switch>
                     </Box>
                 </Container>
             </div>
-            <AuthFooter />
+            {/*<AuthFooter />*/}
         </>
     );
 };

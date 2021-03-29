@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/admin/{path?}', function () {
+Route::get('/admin/{all?}', function () {
     return view('admin');
-});
+})->where(['all' => '.*']);
+
+Route::any('/{all}', function () {
+    return view('welcome');
+})->where(['all' => '.*']);
 
 //Auth::routes();
 

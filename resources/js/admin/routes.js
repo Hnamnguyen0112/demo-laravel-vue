@@ -13,12 +13,12 @@ var routes = [
         layout: "/admin",
     },
     {
-        path: "/login",
+        path: "/",
         name: "Login",
         icon: VpnKey,
         iconColor: "Info",
         component: Login,
-        layout: "/auth",
+        layout: "/admin/login",
     }
 ]
 export default routes;

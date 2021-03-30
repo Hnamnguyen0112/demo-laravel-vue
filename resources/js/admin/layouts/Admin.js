@@ -26,6 +26,7 @@ const useStyles = makeStyles(componentStyles)
 const Admin = () => {
     const classes = useStyles()
     const location = useLocation()
+    const routesNoAuth = routes.filter(item => item.name !== 'Login')
     useEffect(() => {
         document.documentElement.scrollTop = 0
         document.scrollingElement.scrollTop = 0
@@ -61,7 +62,7 @@ const Admin = () => {
         <>
             <>
                 <Sidebar
-                    routes={routes}
+                    routes={routesNoAuth}
                     logo={{
                         innerLink: '/admin/index',
                         imgSrc: require('../assets/img/brand/argon-react.png').default,

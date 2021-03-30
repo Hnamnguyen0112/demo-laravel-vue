@@ -1,44 +1,41 @@
+import axios from 'axios'
+
 export const userService = {
     login,
     logout
-};
+}
 
-function login(email, password, remember) {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, remember})
-    };
+function login (email, password, remember) {
+    const loginForm = {
+        email: email,
+        password: password,
+        remember: remember
+    }
 
-    return fetch(`${process.env.MIX_APP_URL}/api/login`, requestOptions)
+    return axios.post(`${process.env.MIX_APP_URL}/api/login`, loginForm)
         .then(handleResponse)
         .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('user', JSON.stringify(user))
 
-            return user;
-        });
+            return user
+        })
 }
 
-function logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('user');
+function logout () {
+    localStorage.removeItem('user')
 }
 
-function handleResponse(response) {
-    return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        if (!response.ok) {
-            if (response.status === 401) {
-                // auto logout if 401 response returned from api
-                logout();
-                location.reload(true);
-            }
-
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
+function handleResponse (response) {
+    const data = response.data
+    if (!data.success) {
+        if (response.status === 401) {
+            logout()
+            location.reload(true)
         }
 
-        return data;
-    });
+        const error = (data && data.error)
+        return Promise.reject(error)
+    }
+
+    return data
 }

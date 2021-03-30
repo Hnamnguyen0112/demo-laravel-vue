@@ -40,6 +40,10 @@ function Login () {
     }
     const handleRemember = () => setRemember(!remember)
 
+    const handleLogin = () => {
+        if (!email || !password) return
+        dispatch(userActions.login(email, password, remember))
+    }
     return (
         <>
             <Grid item xs={12} lg={5} md={7}>
@@ -104,7 +108,7 @@ function Login () {
                                 }}
                             />
                             <Box textAlign="center" marginTop="1.5rem" marginBottom="1.5rem">
-                                <Button color="primary" variant="contained" onClick={() => {dispatch(userActions.login(email, password, remember))}}>
+                                <Button color="primary" variant="contained" onClick={handleLogin}>
                                     Sign in
                                 </Button>
                             </Box>

@@ -18,16 +18,12 @@ class AuthController extends Controller
         ]);
         $credentials = $request->only('email', 'password');
         try {
-            if (! $token = Auth::guard('api')->attempt($credentials)) {
+            if (! $token = Auth::guard('api')->attempt($credentials, $request->get('remember', false))) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Login credentials are invalid.',
                 ], 400);
             }
-
-            $admin = Auth::guard('api')->user();
-            $admin->setRememberToken($token);
-            $admin->save();
         } catch (JWTException $e) {
             return response()->json([
                 'success' => false,

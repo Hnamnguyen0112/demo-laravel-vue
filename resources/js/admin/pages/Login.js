@@ -30,6 +30,7 @@ function Login () {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [remember, setRemember] = useState(false)
 
     const handleChangeEmail = (event) => {
         setEmail(event.target.value)
@@ -37,6 +38,7 @@ function Login () {
     const handleChangePassword = (event) => {
         setPassword(event.target.value)
     }
+    const handleRemember = () => setRemember(!remember)
 
     return (
         <>
@@ -93,8 +95,7 @@ function Login () {
                                 />
                             </FormControl>
                             <FormControlLabel
-                                value="end"
-                                control={<Checkbox color="primary"/>}
+                                control={<Checkbox value={remember} onChange={handleRemember} color="primary"/>}
                                 label="Remeber me"
                                 labelPlacement="end"
                                 classes={{
@@ -103,7 +104,7 @@ function Login () {
                                 }}
                             />
                             <Box textAlign="center" marginTop="1.5rem" marginBottom="1.5rem">
-                                <Button color="primary" variant="contained" onClick={() => {dispatch(userActions.login(email, password))}}>
+                                <Button color="primary" variant="contained" onClick={() => {dispatch(userActions.login(email, password, remember))}}>
                                     Sign in
                                 </Button>
                             </Box>

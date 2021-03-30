@@ -1,61 +1,61 @@
-import React from "react";
+import React from 'react'
 // javascipt plugin for creating charts
-import Chart from "chart.js";
+import Chart from 'chart.js'
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+import { Line, Bar } from 'react-chartjs-2'
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import { useTheme } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from '@material-ui/core/styles'
+import { useTheme } from '@material-ui/core/styles'
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardHeader from '@material-ui/core/CardHeader'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import Typography from '@material-ui/core/Typography'
 // @material-ui/icons components
-import ArrowDownward from "@material-ui/icons/ArrowDownward";
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
+import ArrowDownward from '@material-ui/icons/ArrowDownward'
+import ArrowUpward from '@material-ui/icons/ArrowUpward'
 
 // core components
-import Header from "../components/Headers/Header.js";
+import Header from '../components/Headers/Header.js'
 
 import {
     chartOptions,
     parseOptions,
     chartExample1,
     chartExample2,
-} from "../variables/charts.js";
+} from '../variables/charts.js'
 
-import componentStyles from "../assets/theme/pages/dashboard.js";
+import componentStyles from '../assets/theme/pages/dashboard.js'
 
-const useStyles = makeStyles(componentStyles);
+const useStyles = makeStyles(componentStyles)
 
-function Dashboard() {
-    const classes = useStyles();
-    const theme = useTheme();
-    const [activeNav, setActiveNav] = React.useState(1);
-    const [chartExample1Data, setChartExample1Data] = React.useState("data1");
+function Dashboard () {
+    const classes = useStyles()
+    const theme = useTheme()
+    const [activeNav, setActiveNav] = React.useState(1)
+    const [chartExample1Data, setChartExample1Data] = React.useState('data1')
 
     if (window.Chart) {
-        parseOptions(Chart, chartOptions());
+        parseOptions(Chart, chartOptions())
     }
 
     const toggleNavs = (index) => {
-        setActiveNav(index);
-        setChartExample1Data("data" + index);
-    };
+        setActiveNav(index)
+        setChartExample1Data('data' + index)
+    }
     return (
         <>
-            <Header />
+            <Header/>
             {/* Page content */}
             <Container
                 maxWidth={false}
@@ -74,7 +74,7 @@ function Dashboard() {
                     >
                         <Card
                             classes={{
-                                root: classes.cardRoot + " " + classes.cardRootBgGradient,
+                                root: classes.cardRoot + ' ' + classes.cardRootBgGradient,
                             }}
                         >
                             <CardHeader
@@ -122,7 +122,7 @@ function Dashboard() {
                                                     classes={{
                                                         root:
                                                             activeNav === 1
-                                                                ? ""
+                                                                ? ''
                                                                 : classes.buttonRootUnselected,
                                                     }}
                                                 >
@@ -135,7 +135,7 @@ function Dashboard() {
                                                     classes={{
                                                         root:
                                                             activeNav === 2
-                                                                ? ""
+                                                                ? ''
                                                                 : classes.buttonRootUnselected,
                                                     }}
                                                 >
@@ -170,18 +170,18 @@ function Dashboard() {
                                 classes={{ root: classes.cardHeaderRoot }}
                                 titleTypographyProps={{
                                     component: Box,
-                                    variant: "h6",
-                                    letterSpacing: ".0625rem",
-                                    marginBottom: ".25rem!important",
+                                    variant: 'h6',
+                                    letterSpacing: '.0625rem',
+                                    marginBottom: '.25rem!important',
                                     classes: {
                                         root: classes.textUppercase,
                                     },
                                 }}
                                 subheaderTypographyProps={{
                                     component: Box,
-                                    variant: "h2",
-                                    marginBottom: "0!important",
-                                    color: "initial",
+                                    variant: 'h2',
+                                    marginBottom: '0!important',
+                                    color: 'initial',
                                 }}
                             ></CardHeader>
                             <CardContent>
@@ -257,7 +257,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootHead,
                                                 }}
                                             >
@@ -267,7 +267,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootHead,
                                                 }}
                                             >
@@ -277,7 +277,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootHead,
                                                 }}
                                             >
@@ -287,7 +287,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootHead,
                                                 }}
                                             >
@@ -301,7 +301,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootBodyHead,
                                                 }}
                                                 component="th"
@@ -336,7 +336,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootBodyHead,
                                                 }}
                                                 component="th"
@@ -371,7 +371,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootBodyHead,
                                                 }}
                                                 component="th"
@@ -406,7 +406,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootBodyHead,
                                                 }}
                                                 component="th"
@@ -441,9 +441,9 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootBodyHead +
-                                                        " " +
+                                                        ' ' +
                                                         classes.borderBottomUnset,
                                                 }}
                                                 component="th"
@@ -456,7 +456,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.borderBottomUnset,
                                                 }}
                                             >
@@ -466,7 +466,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.borderBottomUnset,
                                                 }}
                                             >
@@ -476,7 +476,7 @@ function Dashboard() {
                                                 component={TableCell}
                                                 className={
                                                     classes.tableCellRoot +
-                                                    " " +
+                                                    ' ' +
                                                     classes.borderBottomUnset
                                                 }
                                                 marginBottom="-2px"
@@ -546,7 +546,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootHead,
                                                 }}
                                             >
@@ -556,7 +556,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootHead,
                                                 }}
                                             >
@@ -566,7 +566,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootHead,
                                                 }}
                                             ></TableCell>
@@ -578,7 +578,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootBodyHead,
                                                 }}
                                                 component="th"
@@ -613,7 +613,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootBodyHead,
                                                 }}
                                                 component="th"
@@ -648,7 +648,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootBodyHead,
                                                 }}
                                                 component="th"
@@ -683,7 +683,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootBodyHead,
                                                 }}
                                                 component="th"
@@ -718,9 +718,9 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.tableCellRootBodyHead +
-                                                        " " +
+                                                        ' ' +
                                                         classes.borderBottomUnset,
                                                 }}
                                                 component="th"
@@ -733,7 +733,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.borderBottomUnset,
                                                 }}
                                             >
@@ -743,7 +743,7 @@ function Dashboard() {
                                                 classes={{
                                                     root:
                                                         classes.tableCellRoot +
-                                                        " " +
+                                                        ' ' +
                                                         classes.borderBottomUnset,
                                                 }}
                                             >
@@ -772,7 +772,7 @@ function Dashboard() {
                 </Grid>
             </Container>
         </>
-    );
+    )
 }
 
-export default Dashboard;
+export default Dashboard

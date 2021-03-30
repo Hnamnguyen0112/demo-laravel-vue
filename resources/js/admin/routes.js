@@ -1,24 +1,24 @@
-import Dashboard from "./pages/Dashboard.js";
-import Login from "./pages/Login.js";
-import Tv from "@material-ui/icons/Tv";
-import VpnKey from "@material-ui/icons/VpnKey";
+import Dashboard from './pages/Dashboard.js'
+import Login from './pages/Login.js'
+import Tv from '@material-ui/icons/Tv'
+import VpnKey from '@material-ui/icons/VpnKey'
 
 var routes = [
     {
-        path: "/",
-        name: "Dashboard",
+        path: '/',
+        name: 'Dashboard',
         icon: Tv,
-        iconColor: "Primary",
+        iconColor: 'Primary',
         component: Dashboard,
-        layout: "/admin",
+        layout: '/admin',
     },
     {
-        path: "/",
-        name: "Login",
+        path: '/',
+        name: 'Login',
         icon: VpnKey,
-        iconColor: "Info",
+        iconColor: 'Info',
         component: Login,
-        layout: "/admin/login",
+        layout: '/admin/login',
     }
 ]
-export default routes;
+export default routes

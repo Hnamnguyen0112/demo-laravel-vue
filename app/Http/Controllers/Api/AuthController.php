@@ -12,17 +12,11 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-
-        $validator = Validator::make($credentials, [
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required|string|min:6'
         ]);
-
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->messages()], 200);
-        }
-
+        $credentials = $request->only('email', 'password');
         try {
             if (! $token = Auth::guard('api')->attempt($credentials)) {
                 return response()->json([

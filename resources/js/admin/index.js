@@ -1,30 +1,36 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { store, history } from './helpers'
 
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { ThemeProvider } from '@material-ui/core/styles'
 
-import theme from "./assets/theme/theme.js";
+import theme from './assets/theme/theme.js'
 
-// import "assets/plugins/nucleo/css/nucleo.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-// import "assets/scss/argon-dashboard-react.scss";
+import '@fortawesome/fontawesome-free/css/all.min.css'
 
-import AdminLayout from "./layouts/Admin.js";
-import AuthLayout from "./layouts/Auth.js";
+import AdminLayout from './layouts/Admin.js'
+import AuthLayout from './layouts/Auth.js'
 
 ReactDOM.render(
-    <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <BrowserRouter>
-            <Switch>
-                <Route path="/admin/login" render={(props) => <AuthLayout {...props} />} />
-                <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-                <Redirect from="/" to="/admin/index" />
-            </Switch>
-        </BrowserRouter>
-    </ThemeProvider>,
-    document.getElementById("root")
-);
+    <Provider store={store}>
+        <ThemeProvider theme={theme}>
+            <CssBaseline/>
+            <Router history={history}>
+                <Switch>
+                    <Route path="/admin/login" render={(props) => <AuthLayout {...props} />}/>
+                    <Route path="/admin" render={props => (
+                        localStorage.getItem('user')
+                            ? <AdminLayout {...props} />
+                            : <Redirect to={{ pathname: '/admin/login' }}/>
+                        )}
+                    />
+                    <Redirect from="/" to="/admin"/>
+                </Switch>
+            </Router>
+        </ThemeProvider>
+    </Provider>,
+    document.getElementById('root')
+)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // javascipt plugin for creating charts
 import Chart from 'chart.js'
 // react plugin used to create charts
@@ -42,8 +42,8 @@ const useStyles = makeStyles(componentStyles)
 function Dashboard () {
     const classes = useStyles()
     const theme = useTheme()
-    const [activeNav, setActiveNav] = React.useState(1)
-    const [chartExample1Data, setChartExample1Data] = React.useState('data1')
+    const [activeNav, setActiveNav] = useState(1)
+    const [chartExample1Data, setChartExample1Data] = useState('data1')
 
     if (window.Chart) {
         parseOptions(Chart, chartOptions())

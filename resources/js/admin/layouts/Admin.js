@@ -35,14 +35,24 @@ const Admin = () => {
 
     const getRoutes = (routes) => {
         return routes.map((prop, key) => {
-            if (prop.layout !== '/admin/login') {
-                return (
-                    <Route
-                        path={prop.layout + prop.path}
-                        component={prop.component}
-                        key={key}
-                    />
-                )
+            if (prop.layout === '/admin') {
+                if (prop.name === 'Dashboard') {
+                    return (
+                        <Route exact
+                            path={prop.layout + prop.path}
+                            component={prop.component}
+                            key={key}
+                        />
+                    )
+                } else {
+                    return (
+                        <Route
+                            path={prop.layout + prop.path}
+                            component={prop.component}
+                            key={key}
+                        />
+                    )
+                }
             } else {
                 return null
             }
@@ -64,7 +74,7 @@ const Admin = () => {
                 <Sidebar
                     routes={routesNoAuth}
                     logo={{
-                        innerLink: '/admin/index',
+                        innerLink: '/admin/',
                         imgSrc: require('../assets/img/brand/argon-react.png').default,
                         imgAlt: '...',
                     }}
@@ -95,7 +105,7 @@ const Admin = () => {
                     <AdminNavbar brandText={getBrandText(location.pathname)}/>
                     <Switch>
                         {getRoutes(routes)}
-                        <Redirect from="*" to="/admin/index"/>
+                        <Redirect from="*" to="/admin"/>
                     </Switch>
                     <Container
                         maxWidth={false}

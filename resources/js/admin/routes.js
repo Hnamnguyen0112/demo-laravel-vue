@@ -1,7 +1,9 @@
 import Dashboard from './pages/Dashboard.js'
 import Login from './pages/Login.js'
+import ProfileManagement from './pages/ProfileManagement'
 import Tv from '@material-ui/icons/Tv'
 import VpnKey from '@material-ui/icons/VpnKey'
+import Grain from "@material-ui/icons/Grain";
 
 var routes = [
     {
@@ -10,6 +12,14 @@ var routes = [
         icon: Tv,
         iconColor: 'Primary',
         component: Dashboard,
+        layout: '/admin',
+    },
+    {
+        path: '/profile-management',
+        name: 'Profile Management',
+        icon: Grain,
+        iconColor: 'Primary',
+        component: ProfileManagement,
         layout: '/admin',
     },
     {

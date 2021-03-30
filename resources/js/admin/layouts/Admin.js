@@ -39,9 +39,9 @@ const Admin = () => {
                 if (prop.name === 'Dashboard') {
                     return (
                         <Route exact
-                            path={prop.layout + prop.path}
-                            component={prop.component}
-                            key={key}
+                               path={prop.layout + prop.path}
+                               component={prop.component}
+                               key={key}
                         />
                     )
                 } else {

@@ -25,7 +25,7 @@ ReactDOM.render(
                         localStorage.getItem('user')
                             ? <AdminLayout {...props} />
                             : <Redirect to={{ pathname: '/admin/login' }}/>
-                        )}
+                    )}
                     />
                     <Redirect from="/" to="/admin"/>
                 </Switch>

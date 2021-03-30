@@ -6,7 +6,7 @@ import { useTheme } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 
 import Header from '../components/Headers/Header.js'
-import componentStyles from '../assets/theme/pages/profile-management.js'
+import componentStyles from '../assets/theme/pages/blog-management.js'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
@@ -15,7 +15,7 @@ import CardContent from '@material-ui/core/CardContent'
 
 const useStyles = makeStyles(componentStyles)
 
-function ProfileManagement () {
+function BlogManagement () {
     const classes = useStyles()
     const theme = useTheme()
     return (
@@ -32,7 +32,7 @@ function ProfileManagement () {
                         <Card classes={{ root: classes.cardRoot }}>
                             <CardHeader
                                 className={classes.cardHeader}
-                                title="Profile Management"
+                                title="Blog Management"
                                 titleTypographyProps={{
                                     component: Box,
                                     marginBottom: '0!important',
@@ -50,4 +50,4 @@ function ProfileManagement () {
     )
 }
 
-export default ProfileManagement
+export default BlogManagement

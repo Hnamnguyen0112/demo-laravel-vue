@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { userActions } from '../actions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, connect } from 'react-redux'
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles'
 import { useTheme } from '@material-ui/core/styles'
@@ -23,7 +23,7 @@ import componentStyles from '../assets/theme/pages/login.js'
 
 const useStyles = makeStyles(componentStyles)
 
-function Login () {
+const Login = () => {
     const classes = useStyles()
     const theme = useTheme()
     const dispatch = useDispatch()
@@ -130,4 +130,11 @@ function Login () {
     )
 }
 
-export default Login
+function mapStateToProps(state) {
+    const { loggingIn } = state.authentication;
+    return {
+        loggingIn
+    };
+}
+
+export default connect(mapStateToProps)(Login);

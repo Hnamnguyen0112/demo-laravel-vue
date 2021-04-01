@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 // javascipt plugin for creating charts
 import Chart from 'chart.js'
 // react plugin used to create charts
@@ -39,7 +40,7 @@ import componentStyles from '../assets/theme/pages/dashboard.js'
 
 const useStyles = makeStyles(componentStyles)
 
-function Dashboard () {
+const Dashboard = () => {
     const classes = useStyles()
     const theme = useTheme()
     const [activeNav, setActiveNav] = useState(1)
@@ -775,4 +776,13 @@ function Dashboard () {
     )
 }
 
-export default Dashboard
+function mapStateToProps(state) {
+    const { authentication } = state;
+    const { user } = authentication;
+    return {
+        user
+    };
+}
+
+export default connect(mapStateToProps)(Dashboard);
+

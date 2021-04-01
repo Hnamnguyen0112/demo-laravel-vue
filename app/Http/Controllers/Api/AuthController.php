@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Common\Controllers\BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Tymon\JWTAuth\Exceptions\JWTException;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
     public function login(Request $request)
     {
@@ -19,25 +19,19 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->messages()], 422);
+            return $this->response($validator->messages(), Response::HTTP_UNPROCESSABLE_ENTITY, __('validation.failed'));
         }
-        try {
-            if (! $token = Auth::guard('api')->attempt($credentials, $request->get('remember', false))) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Login credentials are invalid.',
-                ], 401);
-            }
-        } catch (JWTException $e) {
-            return response()->json([
-                'success' => false,
-                'message' => $e->getMessage(),
-            ], 500);
+        if (!$token = Auth::guard('api')->attempt($credentials, $request->get('remember', false))) {
+            return $this->response(null, Response::HTTP_UNAUTHORIZED, __('validation.failed'));
         }
 
-        return response()->json([
-            'success' => true,
-            'token' => $token
-        ]);
+        return $this->response(['token' => $token], Response::HTTP_OK);
+    }
+
+    public function logout()
+    {
+        Auth::guard('api')->logout();
+
+        return $this->response(null, Response::HTTP_OK);
     }
 }

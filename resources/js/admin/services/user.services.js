@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { authHeader } from '../helpers'
 
 export const userService = {
     login,
@@ -22,7 +23,11 @@ function login (email, password, remember) {
 }
 
 function logout () {
-    localStorage.removeItem('user')
+    let user = JSON.parse(localStorage.getItem('user'))
+    if (user && typeof user.token !== "boolean") {
+        axios.post(`${process.env.MIX_APP_URL}/api/logout`, null, { headers: authHeader() })
+    }
+    return localStorage.removeItem('user')
 }
 
 function handleResponse (response) {
@@ -37,5 +42,5 @@ function handleResponse (response) {
         return Promise.reject(error)
     }
 
-    return data
+    return data.data
 }

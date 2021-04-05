@@ -13,7 +13,14 @@ trait HasCrudActions
 {
     public function index(DataTableRequest $request)
     {
-        //paging
+        $result = $this->repository->paginate($request->all());
+        return $this->response(
+            $result,
+            true,
+            Response::HTTP_OK,
+            true
+        );
+
     }
 
     public function store()
@@ -24,11 +31,7 @@ trait HasCrudActions
             DB::beginTransaction();
             $result = $this->repository->create($request);
             DB::commit();
-            return $this->response(
-                $result,
-                Response::HTTP_OK,
-                __('common.create_success')
-            );
+            return $this->response($result);
         } catch (\Exception $e) {
             DB::rollBack();
             throw_if(true, new CustomException($e->getMessage()));
@@ -50,11 +53,7 @@ trait HasCrudActions
             $this->repository->find($id);
             $result = $this->repository->update($request, $id);
             DB::commit();
-            return $this->response(
-                $result,
-                Response::HTTP_OK,
-                __('common.update_success')
-            );
+            return $this->response($result);
         } catch (\Exception $e) {
             DB::rollBack();
             throw_if(true, new CustomException($e->getMessage()));
@@ -68,7 +67,7 @@ trait HasCrudActions
             $this->checkRepository($this->repository);
             $this->repository->delete($id);
             DB::commit();
-            return $this->response(trans('actions.delete_success'));
+            return $this->response(null);
         } catch (\Exception $e) {
             DB::rollBack();
             throw_if(true, new CustomException($e->getMessage()));

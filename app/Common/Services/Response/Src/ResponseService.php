@@ -8,38 +8,46 @@ use Illuminate\Http\Response;
 
 class ResponseService
 {
-    public function send($data, $code = Response::HTTP_OK, $message = null)
+    public function send($data, $status, $statusCode, $paging)
     {
-        $result = [
-            'success' => false,
-            'message' => null,
-            'data' => null,
+        switch ($statusCode) {
+            case Response::HTTP_UNAUTHORIZED:
+                $message = __('common.invalid_login_credentials');
+                break;
+            default:
+                $message = __('common.successfully');
+        }
+
+        if (!$paging) {
+            return response()->json([
+                'success' => $status,
+                'message' => $message,
+                'data' => $data,
+                'errors' => null
+            ], $statusCode);
+        }
+        $data = $data->toArray();
+
+        return response()->json([
+            'success' => $status,
+            'message' => $message,
+            'data' => $data['data'],
             'errors' => null,
-        ];
-
-        if ($code == Response::HTTP_OK) {
-            $result['success'] = true;
-        }
-
-        if ($code == Response::HTTP_OK) {
-            if (is_string($data)) {
-                $result['message'] = $data;
-            } else {
-                $result['data'] = $data;
-            }
-        } else {
-            $code = empty($code) ? Response::HTTP_INTERNAL_SERVER_ERROR : $code;
-            if ($data instanceof \Exception) {
-                $result['message'] = $data->getMessage();
-            } else {
-                if (is_string($data)) {
-                    $result['message'] = $data;
-                } else {
-                    $result['errors'] = $data;
-                    $result['message'] = $message;
-                }
-            }
-        }
-        return response()->json($result, $code);
+            'links' => [
+                "first" => $data['first_page_url'],
+                "last"  => $data['last_page_url'],
+                "prev"  => $data['prev_page_url'],
+                "next"  => $data['next_page_url']
+            ],
+            'meta' => [
+                "current_page" => $data['current_page'],
+                "from" => $data['from'],
+                "last_page" => $data['last_page'],
+                "path" => $data['path'],
+                "per_page" => $data['per_page'],
+                "to" => $data['to'],
+                "total" => $data['total']
+            ]
+        ]);
     }
 }

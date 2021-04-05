@@ -13,8 +13,8 @@ class BaseController extends Controller
     public $validator;
     public $validation;
 
-    public function response($data, $code = Response::HTTP_OK, $message = null)
+    public function response($data, $status = true, $code = Response::HTTP_OK, $paging = false)
     {
-        return ResponseFacade::send($data, $code, $message);
+        return ResponseFacade::send($data, $status, $code, $paging);
     }
 }

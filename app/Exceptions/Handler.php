@@ -92,11 +92,10 @@ class Handler extends ExceptionHandler
                     //$messageCode = 'request.max_attemps';
                     break;
 
-//                    case $e instanceof CustomException:
-//                    case $e instanceof BusinessException:
-//                        $message     = $e->getMessage();
-//                        $statusCode  = $e->getCode();
-//                        break;
+                case $e instanceof CustomException:
+                    $message = $e->getMessage();
+                    $statusCode = $e->getCode();
+                    break;
 
                 default:
                     break;

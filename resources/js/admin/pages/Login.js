@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { userActions } from '../actions'
-import { useDispatch, connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles'
 import { useTheme } from '@material-ui/core/styles'
@@ -49,69 +49,69 @@ const Login = () => {
             <Grid item xs={12} lg={5} md={7}>
                 <Card classes={{ root: classes.cardRoot }}>
                     <CardContent classes={{ root: classes.cardContent }}>
-                            <Box
-                                color={theme.palette.gray[600]}
-                                textAlign="center"
-                                marginBottom="1rem"
-                                marginTop=".5rem"
-                                fontSize="1rem"
-                            >
-                                <Box fontSize="100%" fontWeight="400" component="small">
-                                    Sign in with credentials
-                                </Box>
+                        <Box
+                            color={theme.palette.gray[600]}
+                            textAlign="center"
+                            marginBottom="1rem"
+                            marginTop=".5rem"
+                            fontSize="1rem"
+                        >
+                            <Box fontSize="100%" fontWeight="400" component="small">
+                                Sign in with credentials
                             </Box>
-                            <FormControl
-                                variant="filled"
-                                component={Box}
-                                width="100%"
-                                marginBottom="1rem!important"
-                            >
-                                <FilledInput
-                                    autoComplete="off"
-                                    type="email"
-                                    placeholder="Email"
-                                    startAdornment={
-                                        <InputAdornment position="start">
-                                            <Email/>
-                                        </InputAdornment>
-                                    }
-                                    value={email}
-                                    onChange={handleChangeEmail}
-                                />
-                            </FormControl>
-                            <FormControl
-                                variant="filled"
-                                component={Box}
-                                width="100%"
-                                marginBottom="1rem!important"
-                            >
-                                <FilledInput
-                                    autoComplete="off"
-                                    type="password"
-                                    placeholder="Password"
-                                    startAdornment={
-                                        <InputAdornment position="start">
-                                            <Lock/>
-                                        </InputAdornment>
-                                    }
-                                    value={password}
-                                    onChange={handleChangePassword}
-                                />
-                            </FormControl>
-                            <FormControlLabel
-                                control={<Checkbox value={remember} onChange={handleRemember} color="primary"/>}
-                                label="Remeber me"
-                                labelPlacement="end"
-                                classes={{
-                                    root: classes.formControlLabelRoot,
-                                    label: classes.formControlLabelLabel,
-                                }}
+                        </Box>
+                        <FormControl
+                            variant="filled"
+                            component={Box}
+                            width="100%"
+                            marginBottom="1rem!important"
+                        >
+                            <FilledInput
+                                autoComplete="off"
+                                type="email"
+                                placeholder="Email"
+                                startAdornment={
+                                    <InputAdornment position="start">
+                                        <Email/>
+                                    </InputAdornment>
+                                }
+                                value={email}
+                                onChange={handleChangeEmail}
                             />
-                            <Box textAlign="center" marginTop="1.5rem" marginBottom="1.5rem">
-                                <Button color="primary" variant="contained" onClick={handleLogin}>
-                                    Sign in
-                                </Button>
-                            </Box>
+                        </FormControl>
+                        <FormControl
+                            variant="filled"
+                            component={Box}
+                            width="100%"
+                            marginBottom="1rem!important"
+                        >
+                            <FilledInput
+                                autoComplete="off"
+                                type="password"
+                                placeholder="Password"
+                                startAdornment={
+                                    <InputAdornment position="start">
+                                        <Lock/>
+                                    </InputAdornment>
+                                }
+                                value={password}
+                                onChange={handleChangePassword}
+                            />
+                        </FormControl>
+                        <FormControlLabel
+                            control={<Checkbox value={remember} onChange={handleRemember} color="primary"/>}
+                            label="Remeber me"
+                            labelPlacement="end"
+                            classes={{
+                                root: classes.formControlLabelRoot,
+                                label: classes.formControlLabelLabel,
+                            }}
+                        />
+                        <Box textAlign="center" marginTop="1.5rem" marginBottom="1.5rem">
+                            <Button color="primary" variant="contained" onClick={handleLogin}>
+                                Sign in
+                            </Button>
+                        </Box>
                     </CardContent>
                 </Card>
                 <Grid container component={Box} marginTop="1rem">
@@ -130,11 +130,4 @@ const Login = () => {
     )
 }
 
-function mapStateToProps(state) {
-    const { loggingIn } = state.authentication;
-    return {
-        loggingIn
-    };
-}
-
-export default connect(mapStateToProps)(Login);
+export default Login

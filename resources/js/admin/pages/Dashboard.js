@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
 // javascipt plugin for creating charts
 import Chart from 'chart.js'
 // react plugin used to create charts
@@ -776,13 +775,5 @@ const Dashboard = () => {
     )
 }
 
-function mapStateToProps(state) {
-    const { authentication } = state;
-    const { user } = authentication;
-    return {
-        user
-    };
-}
-
-export default connect(mapStateToProps)(Dashboard);
+export default Dashboard
 

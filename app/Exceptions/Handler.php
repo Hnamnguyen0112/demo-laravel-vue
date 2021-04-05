@@ -101,7 +101,7 @@ class Handler extends ExceptionHandler
                     break;
             }
 
-            Log::error($e->getMessage());
+            Log::error($e);
             return response()->json([
                 'success' => false,
                 'message' => $message,

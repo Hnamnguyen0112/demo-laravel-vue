@@ -4,8 +4,10 @@ import ProfileManagement from './pages/ProfileManagement'
 import BlogManagement from './pages/BlogManagement'
 import Tv from '@material-ui/icons/Tv'
 import VpnKey from '@material-ui/icons/VpnKey'
-import Grain from "@material-ui/icons/Grain";
-import Palette from "@material-ui/icons/Palette";
+import Grain from '@material-ui/icons/Grain'
+import Palette from '@material-ui/icons/Palette'
+import AccessibilityIcon from '@material-ui/icons/Accessibility'
+import AdminAccountManagement from './pages/AdminAccountManagement'
 
 var routes = [
     {
@@ -14,6 +16,14 @@ var routes = [
         icon: Tv,
         iconColor: 'Primary',
         component: Dashboard,
+        layout: '/admin',
+    },
+    {
+        path: '/admin-management',
+        name: 'Admin Management',
+        icon: AccessibilityIcon,
+        iconColor: 'Primary',
+        component: AdminAccountManagement,
         layout: '/admin',
     },
     {

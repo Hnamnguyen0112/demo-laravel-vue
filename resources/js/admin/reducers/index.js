@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 import { authentication } from './authentication.reducers'
+import { adminAccounts } from './admin-account.reducers'
 
 const rootReducer = combineReducers({
-    authentication
+    authentication,
+    adminAccounts
 })
 
 export default rootReducer

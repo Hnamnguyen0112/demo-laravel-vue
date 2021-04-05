@@ -6,7 +6,6 @@ use App\Common\Controllers\BaseController;
 use App\Repositories\AdminRepository;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Validator;
 
 class AuthController extends BaseController
 {
